@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block loclink %}<link rel="stylesheet" href="/static/css/loc.css">{% endblock loclink %}
+{% block title %}contact{% endblock title%}
+{% block body %}
+
+<section class="contact mt-5 mb-5">
+    <div class="contmap">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.444451431098!2d73.07175891407678!3d19.04418675792245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c210444a52e3%3A0x353c5655e695052d!2sTilak%20Maharashtra%20Vidyapeeth!5e0!3m2!1sen!2sin!4v1647882252191!5m2!1sen!2sin"
+            width="100%" height="auto" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="contform">
+        <h1>Contact Us</h1>
+        <form action="/location" method="POST">
+            {% csrf_token %}
+            <input type="text" for="fullname" name="fullname" placeholder="Full Name" class="contformtext">
+            <input type="text" name="email" id="email" placeholder="example@mail.com" class="contformtext">
+            <input type="phone" name="phone" for="phone" placeholder="Phone no" class="contformtext">
+            <textarea type="text" placeholder="Message" id="message" name="message" class="contformtextarea"></textarea>
+            <input type="submit" name="Submit" class="contformbtn">
+        </form>
+    </div>
+</section>
+
+{% endblock body %}

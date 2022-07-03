@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Lensmart{% endblock title%}
+{% block body %}
+<main>
+    <section>
+        <div class="border">
+            <h1 class="center">
+                The Next Generation of Spectacles
+            </h1>
+            <div class="center underline">
+                artifully curated eyewear, Explore modern standard frames, sunglasses and blue light filtering
+                glasses.
+            </div>
+            <a href="/location" class="learnbtn">learn more ></a>
+        </div>
+    </section>
+    <section>
+        <div class="subscribecon">
+            <div class="subscribecon1">
+                <h3 class="subtitle"> JOIN OUR <br> MAILING LIST</h3>
+                <p class="subtext">
+                    And get discount notifications and more.
+                </p>
+            </div>
+            <form action="/" method="POST" class="subscribecon2">
+                {% csrf_token %}
+                <input type="email" name="email_sub" placeholder="example@mail.com">
+                <input type="submit" name="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock body %}

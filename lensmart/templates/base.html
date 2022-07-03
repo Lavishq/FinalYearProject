@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    {% block loclink %} {% endblock loclink %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken')
+
+    </script>
+
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>{% block title %} {% endblock title%}</title>
+    <style>
+        body {
+            background-color: rgb(210, 210, 210);
+        }
+
+        nav ul li a {
+            color: hsl(210deg 100% 16%);
+        }
+    </style>
+</head>
+
+<body>
+    <nav style="background-color: rgb(14, 32, 81);">
+        <div class="container nav-wrapper">
+            <a style="font-family: cursive" href="/" class="brand-logo">LensMart</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="grey-text text-lighten-5" href="/">home</a></li>
+                <li><a class="grey-text text-lighten-5" href="/products">products</a></li>
+                <li><a class="grey-text text-lighten-5" href="/location">contact</a></li>
+                <li><a class="grey-text text-lighten-5" href="/about">about</a></li>
+                {% if user.is_authenticated %}
+                {% comment %} <a id="cart-icon">cart<i class="bx bx-shopping-bag"></i></a> {% endcomment %}
+                <li><a class="grey-text text-lighten-5" href="/mycart">cart <span>{{item.quantity}}</span><i
+                            class="material-icons right">add_shopping_cart</i></a></li>
+                <li class="tab disabled"><a class="grey-text text-lighten-5" href="#">Welcome, {{user.first_name}}</a>
+                </li>
+                <li><a {% comment %}onclick="M.toast({html: 'I am a toast'})" {% endcomment %}
+                        class="grey-text text-lighten-5" href="/logout">log out</a></li>
+                {% else %}
+                <li><a class="grey-text text-lighten-5" href="/login">log in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock body %}
+
+    <footer class="footer">
+        <div class="container">
+            <div class="fucont">
+                <div class="row">
+                    <div class="focol">
+                        <h4>YOUR VISION</h4>
+                        <ul>
+                            <li><a href="/products">our services</a></li>
+                            <li><a href="#">privacy policy</a></li>
+                            <li><a href="#">term and services</a></li>
+                        </ul>
+                    </div>
+                    <div class="focol">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="/about">learn more</a></li>
+                            <li><a href="/location">contact</a></li>
+                            <li><a href="/location">location</a></li>
+                            <li><a href="/about">about us</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="focol">
+                        <h4>online shop</h4>
+                        <ul>
+                            <li><a href="/products">frames</a></li>
+                            <li><a href="/products">sunglasses</a></li>
+                            <li><a href="/products">blue light filtering glasses</a></li>
+                        </ul>
+                    </div>
+                    <div class="focol">
+                        <h4>follow us</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/iLavishq" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://in.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy"> copyright © 2022, Lensmart inc.</div>
+    </footer>
+    <script type="text/javascript" src="/static/script/cart.js"></script>
+</body>
+
+</html>

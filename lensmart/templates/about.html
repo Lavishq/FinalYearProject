@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}about{% endblock title%}
+{% block body %}
+<main>
+    <section style="background-color: rgb(221, 221, 221);">
+        <h3 style="text-align: center; margin: 3%; font-size: 3rem; color:#0e2051">Welcome to <span class="logo">Lensmart</span></h3>
+        <div class="center" style="margin:3% 20%;">artifully curated eyewear, Explore modern standard frames,
+            sunglasses and blue light filtering glasses.Offering an extensive collection of top eyewear like frames, sunglasses and blue light filtering glasses, our customers can shop easily online. We offer reliable service, speedy deliveries, free delivery nationwide, and easy payment methods. </div>
+        
+        <div class="text-center">
+            <button href="/location"  class="btn btn-primary text btn-lg" >
+                learn more
+            </button>
+        </div>
+    </section>
+
+    <section class="flex" id="features">
+
+        <h1 class="heading"> our <span>features</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="/static/img/feature1.jpg" alt="">
+                <h3>quality product</h3>
+                <p>artifully curated eyewear, Explore modern standard frames,
+                    sunglasses and computer glasses.</p>
+            </div>
+
+            <div class="box">
+                <img src="/static/img/feature2.png" alt="">
+                <h3>free delivery</h3>
+                <p>our customers can shop easily online and delivered for free</p>
+            </div>
+
+            <div class="box">
+                <img src="/static/img/feature3.png" alt="">
+                <h3>easy payments</h3>
+                <p>We offer reliable service, speedy deliveries, free delivery nationwide, and easy payment methods.</p>
+            </div>
+
+        </div>
+</main>
+
+<section>
+    <div class="subscribecon">
+        <div class="subscribecon1">
+            <h3 class="subtitle"> JOIN OUR <br> MAILING LIST</h3>
+            <p class="subtext">
+                And get discount notifications and more.
+            </p>
+        </div>
+        <form action="/about" method="POST" class="subscribecon2">
+            {% csrf_token %}
+            <input type="email" name="email_sub" placeholder="example@mail.com">
+            <input type="submit" name="Submit" class="btn btn-primary">
+        </form>
+    </div>
+</section>
+{% endblock body %}

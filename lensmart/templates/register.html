@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block loclink %}
+<link rel="stylesheet" href="/static/css/loc.css">{% endblock loclink %}
+{% block title %}register{% endblock title %}
+{% block body %}
+<section>
+    <div class="contform">
+        <form action="/register" method="POST" class="signupform">
+            {% csrf_token %}
+
+            <div class="container">
+                <h2 class="upper contform">Register</h2>
+                <div class="row g-2">
+                    <div class="input-group">
+                        <span class="input-group-text">First and Last name</span>
+                        <input type="text" aria-label="First name" class="form-control" name="first_name"
+                            placeholder="First Name" required>
+                        <input type="text" aria-label="Last name" class="form-control" name="last_name" required
+                            placeholder="Last Name">
+                    </div>
+                </div><br>
+
+                <div class="col-md">
+                    <div class="form-floating">
+                        <label for="floatingInputValue">Email</label>
+                        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com"
+                            name="username" required>
+                    </div>
+                </div><br>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <label> Password</label>
+                        <input type="password" class="form-control" placeholder="Password" name="password1" required>
+                    </div>
+                </div><br>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="password2"
+                            required>
+                    </div><br>
+                </div>
+            </div>
+            <div class="container">
+                <button type="submit" class="btn btn-primary red accent-3">Register Account</button><br>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="addon-wrapping">Already have an account</span>
+                    <hr>
+                    <a href="/login" class="btn btn-success" type="button" id="button-addon1">Log in</a>
+                </div>
+            </div>
+        </form>
+    </div><br>
+
+</section>
+{% endblock body %}

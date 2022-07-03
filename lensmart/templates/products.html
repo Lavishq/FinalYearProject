@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}products{% endblock title%}
+{% block body %}
+<div class="container mb-5">
+    <h1 class="heading"> Lensmart Collections </h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}" alt="{{product.name}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <button data-product={{product.id}} data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <h6 style="display: inline; float: right; font-weight: 100;"> INR {{product.price}} </h6>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

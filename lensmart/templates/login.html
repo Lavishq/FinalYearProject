@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block loclink %}
+<link rel="stylesheet" href="/static/css/loc.css">
+{% endblock loclink %}
+{% block title %}signin{% endblock title %}
+{% block body %}
+<section>
+    <div class="">
+        <form action="/login" method="POST" class="signupform">
+            {% csrf_token %}
+            <h2 class="container upper contform">sign in</h2>
+            <div class="container">
+                
+                <div class="input-group input-group-lg flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">Email or username</span>
+                    <input type="text" name="username" placeholder="example@email.com" required>
+                    {% comment %} <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="addon-wrapping"> {% endcomment %}
+                </div><br>
+            
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">Password *********</span>
+                    <input type="password" name="password1" placeholder="password" required><br>
+                </div><br>
+
+            </div>
+            <div class="container">
+                <button type="submit" class="btn btn-primary red accent-3">LOG IN<i
+                        class="material-icons right">keyboard_backspace</i></button><br>
+            </div><hr>
+            <br>
+            
+            <div class="container">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="addon-wrapping">Don't have an account</span>
+                    <hr>
+                    <a href="/register" class="btn btn-success" type="button" id="button-addon1">Create account</a>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+</section>
+{% endblock body %}
